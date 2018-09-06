@@ -10,12 +10,12 @@ import java.util.Random;
 public class RollDiceController {
 
     @GetMapping("/roll-dice")
-    private String diceRoll() {
+    public String diceRoll() {
         return "roll-dice";
     }
 
     @GetMapping("/roll-dice/{guess}")
-    private String guessOne(@PathVariable int guess, Model viewModel) {
+    public String guessOne(@PathVariable int guess, Model viewModel) {
         Random random = new Random();
         int diceNumber = random.nextInt((6 - 1) + 1) + 1;
         viewModel.addAttribute("guess", guess);

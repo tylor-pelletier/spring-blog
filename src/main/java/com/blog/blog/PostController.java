@@ -1,28 +1,38 @@
 package com.blog.blog;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class PostController {
+    List<Post> posts = new ArrayList<>();
 
-    @RequestMapping(path = "/posts")
-    @ResponseBody
-    private String posts() {
-        return "<h1>Posts</h1>";
+    public PostController() {
+        posts.add(new Post("Vacation", "Went on a cruise to the Bahamas."));
+        posts.add(new Post("Family", "Going home for my sister's wedding."));
+        posts.add(new Post("Friends", "I floated the river with my friends."));
     }
 
-    @RequestMapping(path = "/posts/{id}")
-    @ResponseBody
-    private String individualPost(
-            @PathVariable int id
-    ) {
-        return "<h1>Posts from user " + id + "</h1>";
+    @GetMapping("/posts")
+    public String allPosts(Model viewModel) {
+        viewModel.addAttribute("posts", posts);
+        return "posts/index";
+    }
+
+    @GetMapping("posts/{id}")
+    public String individualPost(@PathVariable int id, Model viewModel) {
+        Post post = posts.get(id - 1);
+        viewModel.addAttribute("post", post);
+        return "posts/show";
     }
 
     @RequestMapping(path = "/posts/create", method = RequestMethod.GET)
     @ResponseBody
-    private String create() {
+    public String create() {
         String createPost = "";
         createPost += "<form action='/posts/create' method='post>";
         createPost += "<div class='form-group'";
@@ -36,7 +46,7 @@ public class PostController {
 
     @RequestMapping(path = "/posts/create", method = RequestMethod.POST)
     @ResponseBody
-    private String createNewPost() {
+    public String createNewPost() {
         String newPost = "</h1>This is your new post</h1>";
         return newPost;
     }

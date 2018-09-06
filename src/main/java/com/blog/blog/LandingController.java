@@ -8,7 +8,7 @@ public class LandingController {
 
     @RequestMapping(path = "/", method = RequestMethod.GET)
     @ResponseBody
-    private String landingPage() {
+    public String landingPage() {
         return "<h1>This is the landing page!</h1>";
     }
 
