@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8"/>
+    <meta charset="UTF-8" />
     <title>Guess</title>
 </head>
 <body>
     <h1 th:text="${'You guessed: ' + guess}"></h1>
     <h1 th:text="${'The number rolled is: ' + diceNumber}"></h1>
-    <h1 th:if="${guess == diceNumber}">You Guessed Correctly!</h1>
-    <h1 th:if="${guess != diceNumber}">You Guessed Incorrectly.</h1>
+    <h1 th:if="${guess == diceNumber}">You guessed correct!</h1>
+    <h1 th:if="${guess != diceNumber}">You guessed incorrect.</h1>
 </body>
 </html>
