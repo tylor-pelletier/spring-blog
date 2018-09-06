@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Random;
 
 @Controller
-public class RoleDiceController {
+public class RollDiceController {
 
     @GetMapping("/roll-dice")
     private String diceRoll() {
