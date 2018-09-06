@@ -7,7 +7,6 @@
 <body>
     <h1 th:text="${'You guessed: ' + guess}"></h1>
     <h1 th:text="${'The number rolled is: ' + diceNumber}"></h1>
-
     <h1 th:if="${guess == diceNumber}">You Guessed Correctly!</h1>
     <h1 th:if="${guess != diceNumber}">You Guessed Incorrectly.</h1>
 </body>
