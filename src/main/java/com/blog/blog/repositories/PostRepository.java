@@ -1,11 +1,9 @@
-//package com.blog.blog.repositories;
-//
-//import com.blog.blog.Post;
-//import org.springframework.data.jpa.repository.Query;
-//import org.springframework.data.repository.CrudRepository;
-//
-//import java.util.List;
-//
-//public class PostRepository extends CrudRepository<Post, Long> {
-//    List<Post> findAll();
-//}
+package com.blog.blog.repositories;
+
+import com.blog.blog.models.Post;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface PostRepository extends CrudRepository<Post, Long> {
+}
