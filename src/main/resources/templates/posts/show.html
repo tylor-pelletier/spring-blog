@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <div th:replace="fragments/header :: header"></div>
+    <div th:replace="fragments/header :: header('Single Post')"></div>
     <div th:replace="fragments/header :: style"></div>
 </head>
-<body class="container">
+<body>
     <div th:replace="fragments/navbar :: navbar"></div>
 
     <h1>Individual Post</h1>
@@ -12,6 +12,7 @@
     <p th:text="${post.body}"></p>
 
     <div th:replace="fragments/footer :: footer"></div>
-    <script th:replace="fragments/header :: scripts"></script>
+
+    <script th:replace="fragments/scripts :: scripts"></script>
 </body>
 </html>

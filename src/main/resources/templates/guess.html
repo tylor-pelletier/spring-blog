@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <div th:replace="fragments/header :: header"></div>
-    <div th:replace="fragments/header :: style"></div>
+    <div th:replace="fragments/header :: header('Dice Outcome')"></div>
 </head>
 <body>
     <div th:replace="fragments/navbar :: navbar"></div>
@@ -11,7 +10,8 @@
     <h1 th:if="${guess == diceNumber}">You guessed correct!</h1>
     <h1 th:if="${guess != diceNumber}">You guessed incorrect.</h1>
 
+    <div th:replace="fragments/footer :: footer"></div>
 
-    <div th:replace="fragments/header :: scripts"></div>
+    <script th:replace="fragments/scripts :: scripts"></script>
 </body>
 </html>
