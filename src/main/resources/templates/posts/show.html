@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <div th:replace="fragments/header :: header('Single Post')"></div>
-    <div th:replace="fragments/header :: style"></div>
-</head>
-<body>
+
+<head th:replace="fragments/header :: header('Single Post')"></head>
+
     <div th:replace="fragments/navbar :: navbar"></div>
 
-    <h1>Individual Post</h1>
-    <h2 th:text="${post.title}"></h2>
-    <p th:text="${post.body}"></p>
+    <body class="text-warning">
+        <div class="container-fluid">
+            <h1 class="text-white">Individual Post</h1>
+            <h2 th:text="${post.title}"></h2>
+            <p th:text="${post.body}"></p>
+            <p>Created by: <span th:text="${post.user.email}"></span></p>
+        </div>
 
-    <div th:replace="fragments/footer :: footer"></div>
+        <footer th:replace="fragments/footer :: footer"></footer>
 
-    <script th:replace="fragments/scripts :: scripts"></script>
-</body>
+        <script th:replace="fragments/scripts :: scripts"></script>
+    </body>
+
 </html>
