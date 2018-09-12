@@ -2,6 +2,8 @@ package com.blog.blog.controllers;
 
 import com.blog.blog.models.Post;
 import com.blog.blog.repositories.PostRepository;
+import com.blog.blog.repositories.UserRepository;
+import org.apache.catalina.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -10,9 +12,11 @@ import org.springframework.web.bind.annotation.*;
 public class PostController {
 
     PostRepository postsRepo;
+    UserRepository userRepo;
 
-    public PostController(PostRepository postsRepo) {
+    public PostController(PostRepository postsRepo, UserRepository userRepo) {
         this.postsRepo = postsRepo;
+        this.userRepo = userRepo;
     }
 
     @GetMapping("/posts")
@@ -56,5 +60,12 @@ public class PostController {
         postsRepo.delete(id);
         return "redirect:/posts";
     }
+
+//    @GetMapping("/find-user/{username}")
+//    public String findUser(@PathVariable String username) {
+//        User user = userRepo.findByUsername(username);
+//        System.out.println(user.getUsername());
+//        return "";
+//    }
 
 }
