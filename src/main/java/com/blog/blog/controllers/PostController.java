@@ -1,9 +1,10 @@
 package com.blog.blog.controllers;
 
 import com.blog.blog.models.Post;
+import com.blog.blog.models.User;
 import com.blog.blog.repositories.PostRepository;
 import com.blog.blog.repositories.UserRepository;
-import org.apache.catalina.User;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -39,6 +40,8 @@ public class PostController {
 
     @PostMapping("/posts/create")
     public String insertPost(@ModelAttribute Post post) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        post.setUser(user);
         postsRepo.save(post);
         return "redirect:/posts";
     }
